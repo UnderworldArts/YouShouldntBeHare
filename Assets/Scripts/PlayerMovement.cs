@@ -1,0 +1,130 @@
+using UnityEngine;
+
+public class PlayerMovement : MonoBehaviour
+{
+    [Header("Movement")]
+    public float moveSpeed; // Speed at which the player moves
+
+    public float groundDrag; // Drag applied to the player when grounded
+
+    public float jumpForce; // Force applied to the player when jumping
+    public float jumpCooldown; // Cooldown time between jumps
+    public float airMultiplier; // Multiplier for movement speed in the air
+
+    [Header("Keybinds")]
+    public KeyCode jumpKey = KeyCode.Space; // Key to trigger jumping
+
+    [Header("Ground Check")]
+    public float playerHeight; // Height of the player for ground checking
+    public LayerMask whatIsGround; // Layer mask to identify ground objects
+    bool grounded; // Flag to check if the player is grounded
+    bool readyToJump; // Flag to check if the player is ready to jump
+
+
+    public Transform orientation; // Reference to the player's orientation
+
+    float horizontalInput; // Horizontal input from the player
+    float verticalInput;// Vertical input from the player
+
+    Vector3 moveDirection;
+
+    Rigidbody rb;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+        rb.freezeRotation = true;
+        readyToJump = true; // Initialize the jump readiness flag
+    }
+
+    void Update()
+    {
+        // Ground check
+        grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround); // Check if the player is grounded using a raycast
+
+        //Handle drag
+        if (grounded)
+        {
+            rb.linearDamping = groundDrag;
+        }
+        else
+        {
+            rb.linearDamping = 0;
+        }
+
+
+
+        MyInput();
+        SpeedControl();
+    }   
+
+    void FixedUpdate()
+    {
+        MovePlayer();
+    }
+
+    private void MyInput()
+    {
+        horizontalInput = Input.GetAxisRaw("Horizontal"); // Get horizontal input (A/D or Left/Right)
+        verticalInput = Input.GetAxisRaw("Vertical"); // Get vertical input (W/S or Up/Down)
+
+        // Jumping
+        if (Input.GetKey(jumpKey) && readyToJump && grounded)
+        {
+            Debug.Log("Jumping"); 
+
+            readyToJump = false; // Set the jump readiness flag to false
+
+            Jump(); // Call the Jump method to apply jump force
+
+            Invoke(nameof(ResetJump), jumpCooldown); // Schedule the ResetJump method to be called after the jump cooldown
+        }
+
+    }
+
+
+    private void MovePlayer()
+    {
+        // Calculate the movement direction based on player input and orientation
+        moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        
+        //On ground
+        if (grounded)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force); // Apply movement force when grounded
+        //In air
+        else if (!grounded)
+            rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force); // Apply movement force when in the air with air multiplier
+
+
+
+
+    }
+
+
+    private void SpeedControl()
+    {
+        Vector3 flatVel = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z); // Get the player's velocity in the horizontal plane
+
+
+        // Limit the player's speed to the specified moveSpeed
+        if (flatVel.magnitude > moveSpeed)
+        {
+            Vector3 limitedVel = flatVel.normalized * moveSpeed; // Calculate the limited velocity
+            rb.linearVelocity = new Vector3(limitedVel.x, rb.linearVelocity.y, limitedVel.z); // Apply the limited velocity while preserving vertical velocity
+        }
+    }
+
+    private void Jump()
+    {
+        // Reset vertical velocity before jumping
+        rb.linearVelocity = new Vector3(rb.linearVelocity.x, 0f, rb.linearVelocity.z);
+        // Apply jump force to the player's Rigidbody
+        rb.AddForce(transform.up * jumpForce, ForceMode.Impulse);
+    }
+
+    private void ResetJump()
+    {
+        readyToJump = true; // Reset the jump readiness flag
+    }  
+
+}
