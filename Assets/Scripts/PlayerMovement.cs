@@ -32,6 +32,11 @@ public class PlayerMovement : MonoBehaviour
     bool grounded; // Flag to check if the player is grounded
     bool readyToJump; // Flag to check if the player is ready to jump
 
+    [Header("Slope Handling")]
+    public float maxSlopeAngle; // Maximum angle of slopes the player can walk on
+    private RaycastHit slopeHit; // Information about the slope the player is currently on
+
+
 
     public Transform orientation; // Reference to the player's orientation
 
@@ -159,7 +164,15 @@ public class PlayerMovement : MonoBehaviour
     {
         // Calculate the movement direction based on player input and orientation
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
-        
+
+        //On Slope
+        if (OnSlope())
+        {
+            rb.AddForce(GetSlopeMoveDirection() * moveSpeed * 20f, ForceMode.Force); // Apply movement force on the slope
+            if (rb.linearVelocity.y > 0) // Prevent upward movement on slopes
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+        }
+
         //On ground
         if (grounded)
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f, ForceMode.Force); // Apply movement force when grounded
@@ -168,7 +181,8 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(moveDirection.normalized * moveSpeed * 10f * airMultiplier, ForceMode.Force); // Apply movement force when in the air with air multiplier
 
 
-
+        // Turn off gravity while on slope
+        rb.useGravity = !OnSlope(); // Disable gravity when on a slope, enable it otherwise
 
     }
 
@@ -198,5 +212,21 @@ public class PlayerMovement : MonoBehaviour
     {
         readyToJump = true; // Reset the jump readiness flag
     }  
+
+
+    private bool OnSlope()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out slopeHit, playerHeight * 0.5f + 0.3f))
+        {
+            float angle = Vector3.Angle(Vector3.up, slopeHit.normal); // Calculate the angle of the slope
+            return angle < maxSlopeAngle && angle != 0; // Check if the angle is within the allowed range
+        }
+        return false; // Return false if not on a slope
+    }
+
+    private Vector3 GetSlopeMoveDirection()
+    {
+        return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal).normalized; // Calculate the movement direction on the slope
+    }
 
 }
