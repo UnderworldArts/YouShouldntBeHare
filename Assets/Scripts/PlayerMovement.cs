@@ -3,7 +3,9 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    public float moveSpeed; // Speed at which the player moves
+    private float moveSpeed; // Speed at which the player moves
+    public float walkSpeed; // Speed when walking
+    public float sprintSpeed; // Speed when sprinting
 
     public float groundDrag; // Drag applied to the player when grounded
 
@@ -13,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space; // Key to trigger jumping
+    public KeyCode sprintKey = KeyCode.LeftShift; // Key to trigger sprinting
 
     [Header("Ground Check")]
     public float playerHeight; // Height of the player for ground checking
@@ -29,6 +32,16 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
 
     Rigidbody rb;
+
+    // Movement state enumeration to track the player's movement state
+    public enum MovementState
+    {
+        walking,
+        sprinting,
+        air
+    }
+
+    private MovementState state;
 
     private void Start()
     {
@@ -56,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
 
         MyInput();
         SpeedControl();
+        StateHandler();
     }   
 
     void FixedUpdate()
@@ -81,6 +95,31 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+
+
+    // Handle the player's movement state based on input and grounded status
+    private void StateHandler()
+    {
+        // Mode - Sprinting
+        if (grounded && Input.GetKey(sprintKey))
+        {
+            state = MovementState.sprinting; 
+            moveSpeed = sprintSpeed; 
+        }
+        // Mode - Walking
+        else if (grounded)
+        {
+            state = MovementState.walking;
+            moveSpeed = walkSpeed;
+        }
+        // Mode - Air
+        else
+        {
+            state = MovementState.air;
+            moveSpeed = walkSpeed; 
+        }
+    }
+
 
 
     private void MovePlayer()
