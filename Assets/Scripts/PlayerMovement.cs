@@ -9,13 +9,22 @@ public class PlayerMovement : MonoBehaviour
 
     public float groundDrag; // Drag applied to the player when grounded
 
+
+
+    [Header("Jumping")]
     public float jumpForce; // Force applied to the player when jumping
     public float jumpCooldown; // Cooldown time between jumps
     public float airMultiplier; // Multiplier for movement speed in the air
 
+    [Header("Crouching")]
+    public float crouchSpeed; // Speed when crouching
+    public float crouchYscale; // Scale of the player when crouching
+    private float startYscale; // Original scale of the player before crouching
+
     [Header("Keybinds")]
     public KeyCode jumpKey = KeyCode.Space; // Key to trigger jumping
     public KeyCode sprintKey = KeyCode.LeftShift; // Key to trigger sprinting
+    public KeyCode crouchKey = KeyCode.LeftControl; // Key to trigger crouching
 
     [Header("Ground Check")]
     public float playerHeight; // Height of the player for ground checking
@@ -38,6 +47,7 @@ public class PlayerMovement : MonoBehaviour
     {
         walking,
         sprinting,
+        crouching,
         air
     }
 
@@ -48,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         readyToJump = true; // Initialize the jump readiness flag
+
+        startYscale = transform.localScale.y; // Store the original scale of the player
     }
 
     void Update()
@@ -94,12 +106,33 @@ public class PlayerMovement : MonoBehaviour
             Invoke(nameof(ResetJump), jumpCooldown); // Schedule the ResetJump method to be called after the jump cooldown
         }
 
+        // Crouching
+        if(Input.GetKeyDown(crouchKey))
+        {
+            transform.localScale = new Vector3(transform.localScale.x, crouchYscale, transform.localScale.z); // Scale the player down for crouching
+            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse); // Apply a downward force to the player when crouching
+        }
+
+        // Stop crouching
+        if(Input.GetKeyUp(crouchKey))
+        {
+            transform.localScale = new Vector3(transform.localScale.x, startYscale, transform.localScale.z); // Reset the player's scale to the original value
+        }
+
     }
 
 
     // Handle the player's movement state based on input and grounded status
     private void StateHandler()
     {
+        // Mode - Crouching
+        if (Input.GetKey(crouchKey))
+        {
+            state = MovementState.crouching;
+            moveSpeed = crouchSpeed;
+        }
+
+
         // Mode - Sprinting
         if (grounded && Input.GetKey(sprintKey))
         {
