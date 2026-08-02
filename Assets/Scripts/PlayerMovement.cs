@@ -69,6 +69,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+
+        Debug.DrawRay(transform.position, Vector3.down * (playerHeight * 0.5f + 0.2f), Color.red);
         // Ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, whatIsGround); // Check if the player is grounded using a raycast
 
