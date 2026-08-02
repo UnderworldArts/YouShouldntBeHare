@@ -4,7 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] EvolutionManager EvolutionManager;
-    private bool Consumable;
+    private bool Consumable; // turns on when enemy dies
     [SerializeField] TextMeshProUGUI ConsumeText; // press e to consume
   
 
