@@ -38,7 +38,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void UpdateHealthUI()
     {
-        Debug.Log(health);
+        
         float fillFront = frontHealthbar.fillAmount;
         float fillBack = backHealthbar.fillAmount;
         float hFraction = health / maxHealth;
@@ -65,12 +65,14 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        Debug.Log(health);
         health -= damage;
         lerpTimer = 0f;
     }
 
     public void RestoreHealth(float healAmount)
     {
+        Debug.Log(health);
         health += healAmount;
         lerpTimer = 0;
     }
