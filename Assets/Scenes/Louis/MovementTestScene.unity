@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7356263339555459606, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
   m_PrefabInstance: {fileID: 866386354649174727}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866386354649174728}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: edf9d8a60cbf95e4fa50f0dc6814738f, type: 3}
@@ -2927,53 +2927,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4076078230683782855, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+      propertyPath: backHealthbar
+      value: 
+      objectReference: {fileID: 10886891}
+    - target: {fileID: 4076078230683782855, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+      propertyPath: frontHealthbar
+      value: 
+      objectReference: {fileID: 2030394268}
+    - target: {fileID: 4293585749845556665, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+      propertyPath: backXPbar
+      value: 
+      objectReference: {fileID: 739175208}
+    - target: {fileID: 4293585749845556665, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+      propertyPath: levelText
+      value: 
+      objectReference: {fileID: 1831683925}
+    - target: {fileID: 4293585749845556665, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+      propertyPath: frontXPbar
+      value: 
+      objectReference: {fileID: 1389499870}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1834070215259943956, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 866386354649174729}
-    - targetCorrespondingSourceObject: {fileID: 1834070215259943956, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 866386354649174730}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
---- !u!1 &866386354649174728 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1834070215259943956, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
-  m_PrefabInstance: {fileID: 866386354649174727}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &866386354649174729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866386354649174728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3a3094680cf7f46a5a5a58d5d26f23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
-  maxHealth: 100
-  chipSpeed: 2
-  frontHealthbar: {fileID: 2030394268}
-  backHealthbar: {fileID: 10886891}
---- !u!114 &866386354649174730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 866386354649174728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6942010836e5964ba8d700592e74464, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerXP
-  frontXPbar: {fileID: 1389499870}
-  backXPbar: {fileID: 739175208}
-  levelText: {fileID: 1831683925}
 --- !u!1001 &2602929245812624711
 PrefabInstance:
   m_ObjectHideFlags: 0
