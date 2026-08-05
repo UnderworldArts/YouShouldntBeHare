@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 444647673693725189}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.477, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -158,6 +158,9 @@ GameObject:
   - component: {fileID: 7356263339555459606}
   - component: {fileID: 4076078230683782855}
   - component: {fileID: 4293585749845556665}
+  - component: {fileID: 5831510042627395472}
+  - component: {fileID: 8686373528868305413}
+  - component: {fileID: 1381378696512482559}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -270,6 +273,51 @@ MonoBehaviour:
   frontXPbar: {fileID: 0}
   backXPbar: {fileID: 0}
   levelText: {fileID: 0}
+--- !u!114 &5831510042627395472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834070215259943956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2348830a0f034aa4f8384cecca3db959, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerLook
+  cam: {fileID: 0}
+  xSensitivity: 30
+  ySensitivity: 30
+--- !u!114 &8686373528868305413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834070215259943956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4af428079b4f1354c832366ebc6aae0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
+  cam: {fileID: 0}
+  distance: 6
+  mask:
+    serializedVersion: 2
+    m_Bits: 512
+--- !u!114 &1381378696512482559
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834070215259943956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbe9d2c0b7767964e8f5137c82146720, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerUI
+  interactionPrompt: {fileID: 0}
 --- !u!1 &8351410654050162504
 GameObject:
   m_ObjectHideFlags: 0

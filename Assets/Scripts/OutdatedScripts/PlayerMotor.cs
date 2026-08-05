@@ -21,15 +21,7 @@ public class PlayerMotor : MonoBehaviour
 
 
     // Movement state enumeration to track the player's movement state
-    public enum MovementState
-    {
-        walking,
-        sprinting,
-        crouching,
-        air
-    }
-
-    private MovementState state;
+    
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -85,7 +77,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void Crouch()
     {
-        state = MovementState.crouching;
+
         crouching = !crouching;
         lerpCrouch = true;
         crouchTimer = 0;
@@ -94,7 +86,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void Sprint()
     {
-        state = MovementState.sprinting;
+
         sprinting = !sprinting;
         if (sprinting)
         {

@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class RabbitBarrier : MonoBehaviour
 {
-    BoxCollider collider;
-    //[SerializeField] List<BoxCollider> antiHareColliders = new List<BoxCollider>();
+    BoxCollider rabbitCollider;
     [SerializeField] LayerMask playerLayer;
 
     void Start()
@@ -16,7 +15,7 @@ public class RabbitBarrier : MonoBehaviour
         //     rabbitBarrier.excludeLayers = playerLayer;
         //     Debug.Log("exclude player");
         // }
-        collider = GetComponent<BoxCollider>();
-        collider.excludeLayers = playerLayer;
+        rabbitCollider = GetComponent<BoxCollider>();
+        rabbitCollider.excludeLayers = playerLayer;
     }
 }

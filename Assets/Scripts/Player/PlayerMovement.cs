@@ -56,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
         air
     }
 
-    private MovementState state;
+    MovementState state; // Current movement state of the player
 
     private void Start()
     {
