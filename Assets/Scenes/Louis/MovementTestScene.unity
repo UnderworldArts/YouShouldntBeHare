@@ -988,6 +988,54 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &555781924
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 555781926}
+  - component: {fileID: 555781925}
+  m_Layer: 0
+  m_Name: Evolution Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &555781925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555781924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55ad7698dbe1dc419dca5e73f3b6de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EvolutionManager
+  animator: {fileID: 0}
+  EvolutionCount: 0
+  POVCamera: {fileID: 1999280114}
+  Player: {fileID: 1948612204}
+--- !u!4 &555781926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 555781924}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.88094, y: 0.6, z: 3.70532}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &585686971
 GameObject:
   m_ObjectHideFlags: 0
@@ -3049,6 +3097,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1834070215259943956, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
   m_PrefabInstance: {fileID: 866386354649174727}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1948612204 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7356263339555459606, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+  m_PrefabInstance: {fileID: 866386354649174727}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1948612197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf9d8a60cbf95e4fa50f0dc6814738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
 --- !u!20 &1999280114 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 7658606680598738313, guid: 7501a51a07b6ce14cb4f08bbf3530a40, type: 3}
@@ -3306,6 +3365,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1948612197}
+    - target: {fileID: 6175675493152870084, guid: 4bb5820463a92ff48a41142dd34d3065, type: 3}
+      propertyPath: EvolutionManager
+      value: 
+      objectReference: {fileID: 555781925}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3456,6 +3519,10 @@ PrefabInstance:
       propertyPath: orientation
       value: 
       objectReference: {fileID: 1854311534}
+    - target: {fileID: 7658606680598738313, guid: 7501a51a07b6ce14cb4f08bbf3530a40, type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3478,3 +3545,4 @@ SceneRoots:
   - {fileID: 922352525}
   - {fileID: 67895372}
   - {fileID: 1898730414}
+  - {fileID: 555781926}
