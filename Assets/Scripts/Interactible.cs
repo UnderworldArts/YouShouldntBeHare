@@ -4,11 +4,20 @@ using System.Collections.Generic;
 
 public abstract class Interactible : MonoBehaviour
 {
+    public bool useEvents;
+
     public string interactionPrompt; // The prompt to display when the player can interact with this object
 
     public void BaseInteract()
     {
+        
+        if (useEvents)
+        {
+            GetComponent<InteractionEvent>()?.onInteract.Invoke();
+        }
+
         Interact();
+
     }
 
     protected virtual void Interact()
