@@ -9616,6 +9616,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 370753720991125186, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
   m_PrefabInstance: {fileID: 794714432}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &794714439 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7356263339555459606, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+  m_PrefabInstance: {fileID: 794714432}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf9d8a60cbf95e4fa50f0dc6814738f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
 --- !u!1 &796173723
 GameObject:
   m_ObjectHideFlags: 0
@@ -14543,6 +14554,54 @@ MonoBehaviour:
   playerLayer:
     serializedVersion: 2
     m_Bits: 2048
+--- !u!1 &1092765225
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1092765227}
+  - component: {fileID: 1092765226}
+  m_Layer: 0
+  m_Name: Evolution Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1092765226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092765225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55ad7698dbe1dc419dca5e73f3b6de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EvolutionManager
+  animator: {fileID: 0}
+  EvolutionCount: 0
+  POVCamera: {fileID: 1484984664}
+  Player: {fileID: 794714439}
+--- !u!4 &1092765227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092765225}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.97, y: 2.46282, z: 10.37402}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1150654848
 GameObject:
   m_ObjectHideFlags: 0
@@ -16754,6 +16813,11 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1484984655}
   m_Enabled: 1
+--- !u!20 &1484984664 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7658606680598738313, guid: 7501a51a07b6ce14cb4f08bbf3530a40, type: 3}
+  m_PrefabInstance: {fileID: 171068812}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1513881434
 GameObject:
   m_ObjectHideFlags: 0
@@ -30051,6 +30115,7 @@ GameObject:
   - component: {fileID: 2099301832}
   - component: {fileID: 2099301831}
   - component: {fileID: 2099301830}
+  - component: {fileID: 2099301834}
   m_Layer: 0
   m_Name: Dead Enemy Placeholder (5)
   m_TagString: Untagged
@@ -30151,6 +30216,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2099301834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099301829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4eef8fe05d82ca14f9a2cb97bd7343d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  EvolutionManager: {fileID: 1092765226}
+  Consumable: 0
+  ConsumeText: {fileID: 0}
 --- !u!1 &2110734447
 GameObject:
   m_ObjectHideFlags: 0
@@ -30413,3 +30493,4 @@ SceneRoots:
   - {fileID: 1309741058}
   - {fileID: 551845230}
   - {fileID: 2012327814}
+  - {fileID: 1092765227}

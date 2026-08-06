@@ -4,16 +4,9 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] EvolutionManager EvolutionManager;
-    private bool Consumable; // turns on when enemy dies
+    [SerializeField] bool Consumable; // turns on when enemy dies. turned on in the inspector if the hare starts out dead
     [SerializeField] TextMeshProUGUI ConsumeText; // press e to consume
   
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        Consumable = false;
-    }
-
     // Update is called once per frame
     void Update()
     {

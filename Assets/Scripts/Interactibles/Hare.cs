@@ -5,6 +5,7 @@ public class Hare : Interactible
 {
     [SerializeField] private GameObject player;
     private PlayerXP xpSystem; // Reference to the PlayerXP system for managing experience points
+    [SerializeField] EvolutionManager EvolutionManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -24,7 +25,7 @@ public class Hare : Interactible
         
         xpSystem.GainXP(1); // Award 1 XP to the player when interacting with the hare
         gameObject.SetActive(false);
-
+        EvolutionManager.Evolve();
     }
 
 }
