@@ -8,11 +8,11 @@ public class EvolutionManager : MonoBehaviour
 
  
     [SerializeField] Animator animator;
-    public int EvolutionCount;
+    public int evolutionCount;
     [SerializeField] Camera POVCamera;
     [SerializeField] PlayerMovement Player;
     [SerializeField] PlayerHealth hp;
-
+    
     public float currentFOV;
 
     public void Start()
@@ -25,11 +25,12 @@ public class EvolutionManager : MonoBehaviour
     public void Evolve()
     {
         Debug.Log("Evolving...");
-        EvolutionCount++;
+        evolutionCount++;
+        animator.SetInteger("EvolutionCount", evolutionCount);
 
-        StartCoroutine(ChangeFOV(currentFOV, currentFOV + 20f, 1f));
+        StartCoroutine(ChangeFOV(currentFOV, currentFOV + 10f, 1f));
 
-        hp.RestoreHealth(20); // Restore 20 health points upon evolution
+       // hp.RestoreHealth(20); // Restore 20 health points upon evolution
 
         //Change player stats
         Player.walkSpeed++;
@@ -37,6 +38,7 @@ public class EvolutionManager : MonoBehaviour
         Player.crouchSpeed++;
         Player.jumpForce++;
         //change hand sprite
+        
 
     }
 
@@ -49,9 +51,12 @@ public class EvolutionManager : MonoBehaviour
             elapsed += Time.deltaTime;
             float t = elapsed / duration;
             POVCamera.fieldOfView = Mathf.Lerp(startFOV, targetFOV, t);
+            currentFOV = POVCamera.fieldOfView;
             yield return null;
+            
         }
-        POVCamera.fieldOfView = targetFOV;
+        //POVCamera.fieldOfView = targetFOV;
+        //currentFOV = POVCamera.fieldOfView;
     }
 
 

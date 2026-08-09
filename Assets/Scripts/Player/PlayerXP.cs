@@ -82,7 +82,7 @@ public class PlayerXP : MonoBehaviour
         lerpTimer = 0f;
         // You can add additional logic here for what happens when the player levels up
         Debug.Log("Level Up! New Level: " + level);
-        xpRequired += 1f; // Increase the XP required for the next level (you can adjust this formula as needed)
+        xpRequired += 0f; // Increase the XP required for the next level (you can adjust this formula as needed)
 
         EvolutionManager.Evolve();
     }

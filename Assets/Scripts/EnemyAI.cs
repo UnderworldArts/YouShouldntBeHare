@@ -12,7 +12,14 @@ public class EnemyAI : MonoBehaviour
 
     public float health;
 
+    [SerializeField] EvolutionManager EvolutionManager;
+
     [SerializeField] private SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer component for changing the enemy's appearance
+
+    public Sprite DeadSprite;
+    public Sprite PatrollingSprite;
+    public Sprite IdleSprite;
+    public Sprite ChasingSprite;
 
     //Patrolling
     public Vector3 walkPoint;
@@ -49,18 +56,27 @@ public class EnemyAI : MonoBehaviour
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
+        if (health <= 0)
+        {
+            isDead = true;
+            Dead();
+            spriteRenderer.sprite = DeadSprite;
+        }
 
         if (!playerInSightRange && !isPatrolling && !isDead)
         {
             Idle();
+            spriteRenderer.sprite = IdleSprite;
         }
         if (!playerInSightRange && isPatrolling && !isDead)
         {
             Patrolling();
+            spriteRenderer.sprite = PatrollingSprite;
         }
         if (playerInSightRange && !isDead)
         {
             Chasing();
+            spriteRenderer.sprite = ChasingSprite;
         }
 
 
@@ -118,18 +134,14 @@ public class EnemyAI : MonoBehaviour
     }
 
 
-
+   
 
 
     public void TakeDamage(int damage)
     {
         StartCoroutine(DamageFlash());
         health -= damage;
-        if (health <= 0)
-        {
-            isDead = true;
-            Dead();
-        }
+        
     }
     private void Dead()
     {
