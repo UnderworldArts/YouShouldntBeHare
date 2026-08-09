@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class PlayerHealth : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public Image frontHealthbar;
     public Image backHealthbar;
     [SerializeField] private Rigidbody rb;
+   
 
     [SerializeField] private EnemyAI enemyAI; // Reference to the EnemyAI script for managing enemy behavior
 
@@ -33,6 +35,12 @@ public class PlayerHealth : MonoBehaviour
         if (enemyAI.playerInAttackRange == true)
         {
             TakeDamage(10f);
+        }
+
+        if (health == 0)
+        {
+            Debug.Log("dead");
+            SceneManager.LoadScene("Game Over");
         }
 
     }
@@ -71,6 +79,11 @@ public class PlayerHealth : MonoBehaviour
         Debug.Log(health);
         health -= damage;
         lerpTimer = 0f;
+        if (health == 0)
+        {
+            Debug.Log("dead");
+            SceneManager.LoadScene("Game Over");
+        }
     }
 
     public void RestoreHealth(float healAmount)
