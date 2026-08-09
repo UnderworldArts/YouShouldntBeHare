@@ -1035,8 +1035,6 @@ MonoBehaviour:
   EvolutionCount: 0
   POVCamera: {fileID: 1999280114}
   Player: {fileID: 1948612204}
-  hp: {fileID: 866386354649174734}
-  currentFOV: 0
 --- !u!4 &555781926
 Transform:
   m_ObjectHideFlags: 0
@@ -3449,6 +3447,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1948612197}
+    - target: {fileID: 6175675493152870084, guid: 4bb5820463a92ff48a41142dd34d3065, type: 3}
+      propertyPath: EvolutionManager
+      value: 
+      objectReference: {fileID: 555781925}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3530,10 +3532,6 @@ PrefabInstance:
       propertyPath: frontXPbar
       value: 
       objectReference: {fileID: 1389499870}
-    - target: {fileID: 4293585749845556665, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
-      propertyPath: EvolutionManager
-      value: 
-      objectReference: {fileID: 555781925}
     - target: {fileID: 5477547351502018788, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
       propertyPath: cam
       value: 
@@ -3542,6 +3540,14 @@ PrefabInstance:
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 241081072}
+    - target: {fileID: 5477547351502018788, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 766a3d6146d729f4490ca3af74394455, type: 3}
+    - target: {fileID: 5477547351502018788, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 877167722f90b304dbc7c5f7a071f1a4, type: 3}
     - target: {fileID: 8686373528868305413, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
       propertyPath: cam
       value: 
@@ -3550,6 +3556,14 @@ PrefabInstance:
       propertyPath: crosshair
       value: 
       objectReference: {fileID: 241081072}
+    - target: {fileID: 8686373528868305413, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+      propertyPath: hoverSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 877167722f90b304dbc7c5f7a071f1a4, type: 3}
+    - target: {fileID: 8686373528868305413, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
+      propertyPath: defaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 877167722f90b304dbc7c5f7a071f1a4, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3560,17 +3574,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 370753720991125186, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
   m_PrefabInstance: {fileID: 866386354649174727}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &866386354649174734 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4076078230683782855, guid: 8e8e4e6c07c12c449a99d2f2dda7cd70, type: 3}
-  m_PrefabInstance: {fileID: 866386354649174727}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1948612197}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3a3094680cf7f46a5a5a58d5d26f23, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
 --- !u!1001 &2602929245812624711
 PrefabInstance:
   m_ObjectHideFlags: 0

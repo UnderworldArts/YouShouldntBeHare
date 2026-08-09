@@ -12,6 +12,7 @@ public class PlayerXP : MonoBehaviour
     public Image backXPbar;
     public TextMeshProUGUI levelText;
 
+    [SerializeField] EvolutionManager EvolutionManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -82,5 +83,7 @@ public class PlayerXP : MonoBehaviour
         // You can add additional logic here for what happens when the player levels up
         Debug.Log("Level Up! New Level: " + level);
         xpRequired += 1f; // Increase the XP required for the next level (you can adjust this formula as needed)
+
+        EvolutionManager.Evolve();
     }
 }

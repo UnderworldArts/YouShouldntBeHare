@@ -276,6 +276,7 @@ MonoBehaviour:
   frontXPbar: {fileID: 0}
   backXPbar: {fileID: 0}
   levelText: {fileID: 0}
+  EvolutionManager: {fileID: 0}
 --- !u!114 &5831510042627395472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,6 +309,9 @@ MonoBehaviour:
   interactibleMask:
     serializedVersion: 2
     m_Bits: 512
+  crosshair: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 877167722f90b304dbc7c5f7a071f1a4, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 877167722f90b304dbc7c5f7a071f1a4, type: 3}
 --- !u!114 &5477547351502018788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,10 +325,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
   cam: {fileID: 0}
-  distance: 4
+  distance: 6
+  crosshair: {fileID: 0}
+  defaultSprite: {fileID: 21300000, guid: 877167722f90b304dbc7c5f7a071f1a4, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 766a3d6146d729f4490ca3af74394455, type: 3}
   enemyMask:
     serializedVersion: 2
     m_Bits: 4096
+  needsTutorial: 0
 --- !u!114 &1381378696512482559
 MonoBehaviour:
   m_ObjectHideFlags: 0

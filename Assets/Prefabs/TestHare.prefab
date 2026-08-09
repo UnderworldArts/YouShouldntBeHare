@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5440850683878051738}
   m_Layer: 12
   m_Name: TestHare
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,7 +124,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -147,8 +147,8 @@ MonoBehaviour:
   useEvents: 0
   interactionPrompt: Press E to Consume Hare
   player: {fileID: 0}
-  EvolutionManager: {fileID: 0}
   enemyAI: {fileID: 5440850683878051738}
+  isConsumable: 0
 --- !u!195 &2225820318997007060
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -194,7 +194,7 @@ MonoBehaviour:
   health: 5
   spriteRenderer: {fileID: 0}
   walkPoint: {x: 0, y: 0, z: 0}
-  walkPointRange: 0
+  walkPointRange: 5
   sightRange: 10
   attackRange: 5
   playerInSightRange: 0
@@ -203,4 +203,4 @@ MonoBehaviour:
   isDead: 0
   hurtDuration: 1
   numberOfFlashes: 1
-  enemyCollider: {fileID: 0}
+  enemyCollider: {fileID: 8691251354999276764}

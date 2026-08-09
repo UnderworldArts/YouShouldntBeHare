@@ -31,8 +31,7 @@ public class EnemyAI : MonoBehaviour
     //Visualises the character taking damage
     [SerializeField] private float hurtDuration;
     [SerializeField] private int numberOfFlashes;
-    [SerializeField] private Collider enemyCollider; // Reference to the enemy's collider for disabling it when dead
-
+    [SerializeField] private Collider enemyCollider; 
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -92,7 +91,10 @@ public class EnemyAI : MonoBehaviour
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
 
-
+        if (distanceToWalkPoint.magnitude < 1f)
+        {
+            walkPointSet = false;
+        }
     }
 
     private void SearchWalkPoint()
@@ -132,6 +134,20 @@ public class EnemyAI : MonoBehaviour
     private void Dead()
     {
         agent.SetDestination(transform.position);
+    }
+
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player") && !isDead)
+        {
+            Debug.Log("Player hit by enemy");
+            PlayerHealth playerHealth = collision.gameObject.GetComponent<PlayerHealth>();
+            if (playerHealth != null)
+            {
+                playerHealth.TakeDamage(10f);
+            }
+        }
     }
 
     private void OnDrawGizmosSelected()
