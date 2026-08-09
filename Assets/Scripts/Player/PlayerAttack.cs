@@ -30,33 +30,35 @@ public class PlayerAttack : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * distance, Color.yellow);
         RaycastHit hitInfo;
 
-        if (Physics.Raycast(ray, out hitInfo, distance, enemyMask))
-        {
-            Debug.Log("Hit: " + hitInfo.collider.name);
+        
 
-            if (needsTutorial)
+            if (Physics.Raycast(ray, out hitInfo, distance, enemyMask))
             {
-                playerUI.UpdateText("Press Left Mouse Button to Defend yourself!");
-            }
+                Debug.Log("Can attack: " + hitInfo.collider.name);
 
-            if (hitInfo.collider.GetComponent<EnemyAI>() != null)
-            {
-
-                
-
-                EnemyAI enemyAI = hitInfo.collider.GetComponent<EnemyAI>();
-
-                crosshair.sprite = hoverSprite;
-                crosshair.color = Color.red;
-
-                if (Input.GetKeyDown(KeyCode.Mouse0))
+                if (needsTutorial)
                 {
-                    enemyAI.TakeDamage(1);
+                    playerUI.UpdateText("Press Left Mouse Button to Defend yourself!");
                 }
-            }
-            
 
-        }
+                if (hitInfo.collider.GetComponent<EnemyAI>() != null)
+                {
+
+
+
+                    EnemyAI enemyAI = hitInfo.collider.GetComponent<EnemyAI>();
+
+                    crosshair.sprite = hoverSprite;
+                    crosshair.color = Color.red;
+
+                    if (Input.GetKeyDown(KeyCode.Mouse0))
+                    {
+                        enemyAI.TakeDamage(1);
+                    }
+                }
+
+            }
+        
   
     }
 }

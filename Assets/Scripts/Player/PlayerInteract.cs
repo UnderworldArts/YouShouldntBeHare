@@ -30,27 +30,27 @@ public class PlayerInteract : MonoBehaviour
         Debug.DrawRay(ray.origin, ray.direction * distance, Color.red);
         RaycastHit hitInfo;
         if (Physics.Raycast(ray, out hitInfo, distance, interactibleMask))
-        {
-            Debug.Log("Hit: " + hitInfo.collider.name);
-
-            if (hitInfo.collider.GetComponent<Interactible>() != null)
             {
-                crosshair.sprite = hoverSprite;
-                crosshair.color = Color.yellow;
-                Interactible interactible = hitInfo.collider.GetComponent<Interactible>();
-                playerUI.UpdateText(interactible.interactionPrompt);
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    interactible.BaseInteract();
-                }
-            }
-            
-        }
-        else
-        {
-            crosshair.sprite = defaultSprite;
-            crosshair.color = Color.white;
-        }
+                Debug.Log("Can consume: " + hitInfo.collider.name);
 
+                if (hitInfo.collider.GetComponent<Interactible>() != null)
+                {
+                    crosshair.sprite = hoverSprite;
+                    crosshair.color = Color.yellow;
+                    Interactible interactible = hitInfo.collider.GetComponent<Interactible>();
+                    playerUI.UpdateText(interactible.interactionPrompt);
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        interactible.BaseInteract();
+                    }
+                }
+
+            }
+            else
+            {
+                crosshair.sprite = defaultSprite;
+                crosshair.color = Color.white;
+            }
+        
     }
 }
