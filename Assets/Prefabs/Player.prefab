@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5802289897487050804}
   - component: {fileID: 585356301759391370}
   - component: {fileID: 9215292595318390794}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlayerObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4625882722539047439}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,10 +160,11 @@ GameObject:
   - component: {fileID: 4293585749845556665}
   - component: {fileID: 5831510042627395472}
   - component: {fileID: 8686373528868305413}
+  - component: {fileID: 5477547351502018788}
   - component: {fileID: 1381378696512482559}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -258,6 +259,8 @@ MonoBehaviour:
   chipSpeed: 2
   frontHealthbar: {fileID: 0}
   backHealthbar: {fileID: 0}
+  rb: {fileID: 0}
+  enemyAI: {fileID: 0}
 --- !u!114 &4293585749845556665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -302,9 +305,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteract
   cam: {fileID: 0}
   distance: 6
-  mask:
+  interactibleMask:
     serializedVersion: 2
     m_Bits: 512
+--- !u!114 &5477547351502018788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1834070215259943956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45fb932a129ab86468bc9bd526a6a780, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+  cam: {fileID: 0}
+  distance: 4
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 4096
 --- !u!114 &1381378696512482559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +347,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6020517129548602082}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: CameraPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}

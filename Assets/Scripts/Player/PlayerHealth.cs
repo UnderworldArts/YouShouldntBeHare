@@ -8,12 +8,17 @@ public class PlayerHealth : MonoBehaviour
     public float chipSpeed = 2;
     public Image frontHealthbar;
     public Image backHealthbar;
+    [SerializeField] private Rigidbody rb;
+
+    [SerializeField] private EnemyAI enemyAI; // Reference to the EnemyAI script for managing enemy behavior
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         //Change this to start at low health, to demonstrate heal mechanic
         health = maxHealth; 
+        rb = GetComponent<Rigidbody>();
+        enemyAI = GetComponent<EnemyAI>();
     }
 
     // Update is called once per frame
@@ -25,7 +30,11 @@ public class PlayerHealth : MonoBehaviour
         //Update Healthbar
         UpdateHealthUI();
 
-        
+        if (enemyAI.playerInAttackRange == true)
+        {
+            TakeDamage(10f);
+        }
+
     }
 
     public void UpdateHealthUI()
@@ -55,6 +64,8 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+
+        
     public void TakeDamage(float damage)
     {
         Debug.Log(health);
