@@ -846,6 +846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Menus
   nextScene: Title Screen
+  cursorOn: 1
 --- !u!4 &1222788122
 Transform:
   m_ObjectHideFlags: 0

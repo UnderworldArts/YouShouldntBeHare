@@ -28,7 +28,7 @@ public class EvolutionManager : MonoBehaviour
         evolutionCount++;
         animator.SetInteger("EvolutionCount", evolutionCount);
 
-        StartCoroutine(ChangeFOV(currentFOV, currentFOV + 10f, 1f));
+        StartCoroutine(ChangeFOV(currentFOV, currentFOV + 8f, 1f));
 
        // hp.RestoreHealth(20); // Restore 20 health points upon evolution
 

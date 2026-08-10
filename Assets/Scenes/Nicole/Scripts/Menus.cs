@@ -18,10 +18,21 @@ public class Menus : MonoBehaviour
         source = GetComponent<AudioSource>(); // assigns as the audiosource from the game object the script is on
     }*/
 
+    public bool cursorOn;
+
+
     public void Start()
     {
-        
-        Cursor.visible = true;
+        if (cursorOn)
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
     public void NextScene() // drag the manager under the on click section on the button game object and select this function under the menus drop down
     {
